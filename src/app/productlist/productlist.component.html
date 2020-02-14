@@ -1,0 +1,41 @@
+<div class="col-md-10 offset-md-1 expensesDiv justify-content-center align-items-center" style="margin-top: 50px;">
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <th>Id</th>
+            <th> Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Qntity</th>
+            <th style="text-align: center;">
+                <button class="btn btn-sm btn-success text-white" matTooltip="Add New Expense" (click)="addEditExpenseItem(null)">
+                <i class="fa fa-plus"></i> <span class="ml-1"> </span>Add product
+        </button>
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngIf="productService.products.length ==0">
+                <td class="font-italic text-center" colspan="5">
+                    No expenses recorded
+                </td>
+            </tr>
+            <tr *ngFor="let item of productService.products ; let i = index;">
+                <td>{{item.productId}}</td>
+                <td>{{item.productname}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.qnty}}</td>
+                <td style="text-align: center;">
+                    <button class="btn btn-sm btn-info text-white actionButton mr-2" matTooltip="Edit Expense" (click)="addEditExpenseItem(i)">
+                        <i class="fa fa-pencil"></i><span class="sm-1"></span> Edit
+                </button>
+
+                    <button class="btn btn-sm btn-danger text-white actionButton" matTooltip="Delete Expense" style=" background-color: red; border-style: none" b (click)="DeleteItem(item.productId)">
+                    <i class="fa fa-trash" aria-hidden="true"></i> <span class="sm-1"></span> Delete
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
